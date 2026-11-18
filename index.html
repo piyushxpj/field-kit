@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171717">
+  <meta name="description" content="Four image tools in one studio: Glyph Field, Dither, Pixel Pop and Characters. Everything runs in your browser.">
+  <title>Field Kit — image tools studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171717'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='monospace' font-size='34' fill='%23eeeeee'%3E@%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="./" aria-label="Field Kit home">Field Kit<span class="version">STUDIO</span></a>
+    <nav class="tool-nav" id="tool-nav" role="tablist" aria-label="Tools"></nav>
+    <div class="toolbar">
+      <button id="primary" class="generate"></button>
+      <button id="copy" class="icon-button" aria-label="Copy image" title="Copy image"></button>
+      <div class="export-controls">
+        <select id="export-format" class="studio-select format-select" aria-label="Export format"></select>
+        <button id="download" class="export" data-state="idle" aria-label="Export artwork">
+          <span class="export-face export-idle" data-icon="download">Export</span>
+          <span class="export-face export-busy" data-icon="loader" aria-hidden="true">Preparing</span>
+          <span class="export-face export-done" data-icon="check" aria-hidden="true">Saved</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <aside class="controls" aria-label="Tool controls">
+      <div class="intro"><h1 id="tool-title"></h1><p id="tool-intro"></p></div>
+      <div id="inspector"></div>
+      <p class="local-note">Made in your browser. Yours to keep. <button type="button" id="open-shortcuts" class="link-button">Keyboard shortcuts <kbd class="key">?</kbd></button></p>
+    </aside>
+    <section class="workspace" aria-label="Preview">
+      <div class="preview-top"><div><span id="art-title"></span><span class="slash">/</span><span id="art-sub"></span></div><span id="dimensions"></span></div>
+      <div class="art-stage" id="stage">
+        <div class="drop-overlay" aria-hidden="true"><div>Drop to use this image<small>PNG, JPG, GIF or WebP</small></div></div>
+      </div>
+      <div class="preview-bottom"><div class="preview-left"><span class="preview-label"><i aria-hidden="true"></i>Live preview</span><div class="stage-actions" id="stage-actions"></div></div><span id="render-status" role="status" aria-live="polite">Ready</span></div>
+      <div class="history-header"><h2>Recent <span id="history-count">00</span></h2><span>Select to restore</span></div>
+      <div id="history" class="history" aria-label="Recent work"></div>
+    </section>
+  </main>
+  <input id="file" type="file" accept="image/*" hidden>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="shortcuts" class="sheet" aria-labelledby="shortcuts-title">
+    <div class="sheet-head"><h2 id="shortcuts-title">Shortcuts</h2><button type="button" class="icon-button small" data-close aria-label="Close"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div id="shortcuts-list" class="shortcut-list"></div>
+  </dialog>
+  <script src="kit.js"></script>
+  <script src="tools/glyph-shapes.js"></script>
+  <script src="tools/glyph-field.js"></script>
+  <script src="tools/dither.js"></script>
+  <script src="tools/pixel-pop.js"></script>
+  <script src="tools/characters.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
